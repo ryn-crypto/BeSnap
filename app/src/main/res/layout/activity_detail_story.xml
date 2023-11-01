@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.detail.DetailStoryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_detail_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:contentDescription="@string/container_img"
+            android:transitionName="image"
+            app:layout_constraintBottom_toBottomOf="@+id/description_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_detail_photo"
+            app:layout_constraintEnd_toEndOf="@+id/iv_detail_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/description_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/filter3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <RelativeLayout
+                android:id="@+id/profileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bottom_border"
+                android:paddingBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profileCardView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:transitionName="profileImg"
+                    app:cardCornerRadius="48dp"
+                    app:cardElevation="4dp">
+
+                    <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/profile_image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/box_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/profileCardView">
+
+                    <TextView
+                        android:id="@+id/tv_detail_name"
+                        android:layout_width="150dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/user_name"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:transitionName="name"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TextSizeCheck" />
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/description_box_shimmer"
+                        android:layout_width="165dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="9dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shimmer_auto_start="true"
+                        app:shimmer_base_color="@color/black"
+                        app:shimmer_duration="1000">
+
+                        <LinearLayout
+                            android:id="@+id/shimmerImagePlaceholder"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:orientation="horizontal"
+                            app:cardCornerRadius="9dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/description_box_shimmer"
+                            app:layout_constraintStart_toStartOf="@+id/description_box_shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/description_box_shimmer" />
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_detail_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@string/descriptions_story"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:transitionName="description"
+                        app:layout_constraintStart_toStartOf="@+id/tv_detail_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_name" />
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/description_box_shimmer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="9dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/description_box_shimmer"
+                        app:shimmer_auto_start="true"
+                        app:shimmer_base_color="@color/black"
+                        app:shimmer_duration="1000">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:orientation="horizontal"
+                            app:cardCornerRadius="9dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/description_box_shimmer2"
+                            app:layout_constraintStart_toStartOf="@+id/description_box_shimmer2"
+                            app:layout_constraintTop_toTopOf="@+id/description_box_shimmer2" />
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <TextView
+                        android:id="@+id/uploadTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/time_upload"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        android:textStyle="italic"
+                        android:transitionName="timeUpload"
+                        app:layout_constraintStart_toStartOf="@+id/tv_detail_description"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_description"
+                        tools:ignore="SmallSp" />
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/description_box_shimmer3"
+                        android:layout_width="70dp"
+                        android:layout_height="10dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="6dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="9dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/description_box_shimmer2"
+                        app:shimmer_auto_start="true"
+                        app:shimmer_base_color="@color/black"
+                        app:shimmer_duration="1000">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/rounded_background"
+                            android:orientation="horizontal"
+                            app:cardCornerRadius="9dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/description_box_shimmer3"
+                            app:layout_constraintStart_toStartOf="@+id/description_box_shimmer3"
+                            app:layout_constraintTop_toTopOf="@+id/description_box_shimmer3" />
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profileLayout"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileLayout"
+                tools:ignore="RtlSymmetry">
+
+                <!-- Ikon sebelah kiri (start) -->
+                <ImageButton
+                    android:id="@+id/likeButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:contentDescription="@string/icon_like"
+                    android:src="@drawable/like"
+                    android:transitionName="like" />
+
+                <ImageButton
+                    android:id="@+id/comment"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:contentDescription="@string/icon_share"
+                    android:src="@drawable/comment"
+                    android:transitionName="comment"
+                    tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+                <ImageButton
+                    android:id="@+id/shareButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:contentDescription="@string/icon_share"
+                    android:src="@drawable/share"
+                    android:transitionName="share" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.ryan.storyapp.ui.main.home.StoryFragment"
+        android:label="Story Fragment"
+        tools:layout="@layout/fragment_story">
+        <action
+            android:id="@+id/action_story_to_settings"
+            app:destination="@id/settings"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.ryan.storyapp.ui.main.settings.SettingsFragment"
+        android:label="Settings Fragment"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

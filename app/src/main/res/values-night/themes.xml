@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.StoryApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorOnContainer">@color/blue</item>
+        <item name="colorAccent">@color/blue2</item>
+        <item name="colorContainer">@color/silver</item>
+        <item name="textFillColor">@color/white</item>
+        <item name="colorOnSecondary">@color/transparent_dark</item>
+        <item name="colorControlHighlight">@color/white</item>
+
+
+    </style>
+</resources>

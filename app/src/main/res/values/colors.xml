@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="filter">#20ffffff</color>
+    <color name="filter2">#99C0C0C0</color>
+    <color name="filter3">#E67B7B7B</color>
+
+    <!-- light theme-->
+    <color name="cream">#FFF4E3</color>
+    <color name="black">#000000</color>
+    <color name="Light_green">#A8D8B9</color>
+    <color name="orange">#FFA500</color>
+    <color name="transparent_light">#40000000</color>
+
+    <!-- dark theme   -->
+    <color name="blue">#1E3163</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="blue2">#3E92CC</color>
+    <color name="transparent_dark">#40ffffff</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+
+</resources>

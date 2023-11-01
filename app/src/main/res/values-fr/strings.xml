@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">StoryApp</string>
+    <string name="splash" translatable="false">eSnap</string>
+    <string name="powered" translatable="false">Propulsé par Story App</string>
+    <string name="add_story">Bouton Ajouter une Histoire</string>
+    <string name="create_story_title">Créer une Histoire</string>
+    <string name="appwidget_text" translatable="false">WIDGET DE TEST</string>
+    <string name="add_widget" translatable="false">Ajouter un widget</string>
+    <string name="email" translatable="false">E-mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="user_name">Nom d\'Utilisateur</string>
+    <string name="login">Connexion</string>
+    <string name="account">Vous n\'avez pas de compte ?</string>
+    <string name="register_link">Inscrivez-vous ici</string>
+    <string name="login_link">Connectez-vous ici</string>
+    <string name="app_widget_description" translatable="false">Il s\'agit d\'une description du widget de l\'application</string>
+    <string name="empty_image_warning">Veuillez insérer le fichier image</string>
+    <string name="unknownVMC">Classe ViewModel inconnue</string>
+    <string name="error">Erreur</string>
+    <string name="auth_error">Erreur d\'Authentification</string>
+    <string name="regis_error">E-mail déjà pris</string>
+    <string name="invalid">Échec de la demande</string>
+    <string name="storyNF">Histoire non trouvée</string>
+    <string name="bodyN">nul</string>
+    <string name="regis_success">L\'inscription a réussi, veuillez vous connecter</string>
+    <string name="required">E-mail et mot de passe sont requis</string>
+    <string name="invalid_email">Format d\'e-mail invalide</string>
+    <string name="invalid_password">Le mot de passe doit contenir au moins 8 caractères et une combinaison de lettres, de chiffres et de symboles</string>
+    <string name="invalid_type">Type inconnu</string>
+    <string name="error_camera">Échec de l\'ouverture de l\'appareil photo</string>
+    <string name="start_camera">Démarrer l\'appareil photo</string>
+    <string name="fail_shoot">Échec de la prise de vue</string>
+    <string name="granted_p">Demande de permission accordée</string>
+    <string name="denied_p">Demande de permission refusée</string>
+    <string name="con_logout">Confirmer la Déconnexion</string>
+    <string name="logout_message">Êtes-vous sûr de vouloir vous déconnecter ?</string>
+    <string name="confirm">Oui</string>
+    <string name="cancel">Annuler</string>
+    <string name="touch">Vue touchée</string>
+    <string name="day">il y a jours</string>
+    <string name="hour">il y a heures</string>
+    <string name="minute">il y a minutes</string>
+    <string name="seconds">il y a secondes</string>
+    <string name="welcome">BIENVENUE</string>
+    <string name="welcome_desc">Connectez-vous à votre compte</string>
+    <string name="join">REJOIGNEZ LE PLAISIR</string>
+    <string name="join_desc">Inscrivons votre compte</string>
+    <string name="register">S\'inscrire</string>
+    <string name="already">Vous avez déjà un compte ?</string>
+    <string name="preview">Aperçu de l\'image, avant de la télécharger</string>
+    <string name="describe_story">Saisissez votre histoire ici</string>
+    <string name="icon_img">Icône d\'Image</string>
+    <string name="icon_loc">Icône d\'Emplacement</string>
+    <string name="icon_like">Icône J\'aime</string>
+    <string name="icon_comment">Icône de Commentaire</string>
+    <string name="icon_share">Icône de Partage</string>
+    <string name="icon_cam">Icône de l\'Appareil Photo</string>
+    <string name="icon_save">Icône d\'Enregistrement</string>
+    <string name="icon_lang">Icône de Langue</string>
+    <string name="desc_set_lang">Paramètres de Langue</string>
+    <string name="icon_mode">Icône de Mode Sombre/Clair</string>
+    <string name="desc_set_mode">Paramètres de Mode Sombre/Clair</string>
+    <string name="icon_logout">Icône de Déconnexion</string>
+    <string name="desc_set_logout">Déconnexion</string>
+    <string name="upload_story">Télécharger une Histoire</string>
+    <string name="container_img">Conteneur d\'Image</string>
+    <string name="profile_image">Image de Profil</string>
+    <string name="descriptions_story">Description</string>
+    <string name="desc_fab">Créer une Histoire</string>
+    <string name="time_upload">Heure de Téléchargement</string>
+</resources>

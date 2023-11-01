@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name" translatable="false">StoryApp</string>
+    <string name="splash" translatable="false">eSnap</string>
+    <string name="powered" translatable="false">Powered by Story App</string>
+    <string name="add_story">Add Story Button</string>
+    <string name="create_story_title">Create Story</string>
+    <string name="appwidget_text" translatable="false">TEST WIDGET</string>
+    <string name="add_widget" translatable="false">Add widget</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="user_name">User Name</string>
+    <string name="login">Login</string>
+    <string name="account">don\'t have an account?</string>
+    <string name="register_link">Register here</string>
+    <string name="login_link">Login here</string>
+    <string name="app_widget_description" translatable="false">This is an app widget description</string>
+    <string name="empty_image_warning">Please insert the image file</string>
+    <string name="empty_desc_warning" translatable="false">Please insert the description</string>
+    <string name="unknownVMC">Unknown ViewModel class</string>
+    <string name="error">Error</string>
+    <string name="auth_error">Authentication error</string>
+    <string name="regis_error">Email Already Taken</string>
+    <string name="invalid">Failed to perform request</string>
+    <string name="storyNF">Story Not Found</string>
+    <string name="bodyN">null</string>
+    <string name="regis_success">Registration is successful, please login</string>
+    <string name="required">Email and password are required</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="invalid_password">Password must be at least 8 characters and contain a combination of letters, numbers, and symbols</string>
+    <string name="invalid_type">Unknown type</string>
+    <string name="error_camera">Failed to bring up the camera</string>
+    <string name="start_camera">Start Camera</string>
+    <string name="fail_shoot">Failed to take picture</string>
+    <string name="granted_p">Permission request granted</string>
+    <string name="denied_p">Permission request denied</string>
+    <string name="con_logout">Confirm Logout</string>
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="confirm">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="touch">Touched view</string>
+    <string name="day">days ago</string>
+    <string name="hour">hours ago</string>
+    <string name="minute">minutes ago</string>
+    <string name="seconds">seconds ago</string>
+    <string name="welcome">WELCOME BACK</string>
+    <string name="welcome_desc">Login to your account</string>
+    <string name="join">JOIN IN THE FUN</string>
+    <string name="join_desc">Let\'s register your account</string>
+    <string name="register">Register</string>
+    <string name="already">Already have an account?</string>
+    <string name="preview">Image preview, before upload</string>
+    <string name="describe_story">Enter your story here</string>
+    <string name="icon_img">Image Icon</string>
+    <string name="icon_loc">Location Icon</string>
+    <string name="icon_like">Like Icon</string>
+    <string name="icon_comment">Comment Icon</string>
+    <string name="icon_share">Share Icon</string>
+    <string name="icon_cam">Camera Icon</string>
+    <string name="icon_save">Save Icon</string>
+    <string name="icon_lang">Language Icon</string>
+    <string name="desc_set_lang">Settings Language</string>
+    <string name="icon_mode">Dark/Light Icon</string>
+    <string name="desc_set_mode">Setting Dark/Light Mode</string>
+    <string name="icon_logout">Logout Icon</string>
+    <string name="desc_set_logout">Logout</string>
+    <string name="upload_story">Upload Story</string>
+    <string name="container_img">image Container</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="descriptions_story">Description</string>
+    <string name="desc_fab">Create Story</string>
+    <string name="time_upload">Upload Time</string>
+    <string name="noAvailable" translatable="false">API Key is not available</string>
+    <string name="home" translatable="false">Home</string>
+    <string name="maps" translatable="false">Maps</string>
+    <string name="settings" translatable="false">Settings</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_select_long_li">SelectLongLiActivity</string>
+</resources>
