@@ -59,7 +59,7 @@ class StoryFragment : Fragment() {
         val repository = StoryRepository(requireContext())
         val viewModelFactory = StoryViewModelFactory(repository)
         storyViewModel = ViewModelProvider(this, viewModelFactory)[StoryViewModel::class.java]
-        storyViewModel.fetchStories()
+//        storyViewModel.fetchStories()
     }
 
     private fun setView() {

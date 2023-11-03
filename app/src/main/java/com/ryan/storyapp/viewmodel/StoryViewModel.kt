@@ -13,11 +13,11 @@ class StoryViewModel(private val repository: StoryRepository) : ViewModel() {
     private val _result = MutableLiveData<ResultViewModel<List<ListStoryItem>>>()
     val result: LiveData<ResultViewModel<List<ListStoryItem>>> = _result
 
-    fun fetchStories() {
-        repository.fetchStories { result ->
-            _result.value = result
-        }
-    }
+//    fun fetchStories() {
+//        repository.fetchStories { result ->
+//            _result.value = result
+//        }
+//    }
 
     fun isLogin(): Boolean {
         return repository.isLogin()

@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        storyViewModel.fetchStories()
+//        storyViewModel.fetchStories()
     }
 
     private fun vieModelInitialisation() {

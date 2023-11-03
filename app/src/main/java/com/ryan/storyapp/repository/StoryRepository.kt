@@ -16,36 +16,36 @@ class StoryRepository(private val context: Context) {
     private val sharedPreferencesManager: SharedPreferencesManager = SharedPreferencesManager(context)
     private lateinit var apiKey: String
 
-    fun fetchStories(onResult: (ResultViewModel<List<ListStoryItem>>) -> Unit) {
-        getApiKey()
-        if (apiKey != null) {
-            val client = ApiConfig.getApiServiceWithAuth(apiKey).getStories(1, 50, 0)
-            client.enqueue(object : Callback<Stories> {
-                override fun onResponse(
-                    call: Call<Stories>,
-                    response: Response<Stories>
-                ) {
-                    if (response.isSuccessful) {
-                        val storiesResponse = response.body()
-                        val storyItems = storiesResponse?.listStory.orEmpty().filterNotNull()
-                        onResult(ResultViewModel.Success(storyItems))
-                    } else {
-                        onResult(
-                            ResultViewModel.Error(
-                                "${context.getString(R.string.error)}: ${response.body()?.message}"
-                            )
-                        )
-                    }
-                }
-
-                override fun onFailure(call: Call<Stories>, t: Throwable) {
-                    onResult(ResultViewModel.Error("${context.getString(R.string.invalid)}: ${t.message}"))
-                }
-            })
-        } else {
-            onResult(ResultViewModel.Error(context.getString(R.string.noAvailable)))
-        }
-    }
+//    fun fetchStories(onResult: (ResultViewModel<List<ListStoryItem>>) -> Unit) {
+//        getApiKey()
+//        if (apiKey != null) {
+//            val client = ApiConfig.getApiServiceWithAuth(apiKey).getStories(1, 50)
+//            client.enqueue(object : Callback<Stories> {
+//                override fun onResponse(
+//                    call: Call<Stories>,
+//                    response: Response<Stories>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        val storiesResponse = response.body()
+//                        val storyItems = storiesResponse?.listStory.orEmpty().filterNotNull()
+//                        onResult(ResultViewModel.Success(storyItems))
+//                    } else {
+//                        onResult(
+//                            ResultViewModel.Error(
+//                                "${context.getString(R.string.error)}: ${response.body()?.message}"
+//                            )
+//                        )
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Stories>, t: Throwable) {
+//                    onResult(ResultViewModel.Error("${context.getString(R.string.invalid)}: ${t.message}"))
+//                }
+//            })
+//        } else {
+//            onResult(ResultViewModel.Error(context.getString(R.string.noAvailable)))
+//        }
+//    }
 
     fun isLogin(): Boolean {
         getApiKey()

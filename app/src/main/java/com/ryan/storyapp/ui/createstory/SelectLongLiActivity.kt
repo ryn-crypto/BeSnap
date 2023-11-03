@@ -1,14 +1,16 @@
 package com.ryan.storyapp.ui.createstory
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -25,7 +27,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.ryan.storyapp.R
 import com.ryan.storyapp.databinding.ActivitySelectLongLiBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -97,20 +98,27 @@ class SelectLongLiActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         mMap.setOnMyLocationButtonClickListener {
-            if (isOnMainThread()) {
-                val location = mMap.myLocation
-                handleLocationUpdate(location)
-            } else {
-                lifecycleScope.launch {
-                    val location = withContext(Dispatchers.IO) {
-                        mMap.myLocation
-                    }
-                    withContext(Dispatchers.Main) {
-                        handleLocationUpdate(location)
+            val context = this
+
+            if (isLocationEnabled(context)) {
+                if (isOnMainThread()) {
+                    val location = mMap.myLocation
+                    handleLocationUpdate(location)
+                } else {
+                    lifecycleScope.launch {
+                        val location = withContext(Dispatchers.IO) {
+                            mMap.myLocation
+                        }
+                        withContext(Dispatchers.Main) {
+                            handleLocationUpdate(location)
+                        }
                     }
                 }
+                false
+            } else {
+                showEnableLocationDialog(context)
+                false
             }
-            false
         }
 
         binding.choose.setOnClickListener {
@@ -168,6 +176,23 @@ class SelectLongLiActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun showToast() {
             Toast.makeText(this, "The snap location has been selected", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun isLocationEnabled(context: Context): Boolean {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    }
+
+    private fun showEnableLocationDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("GPS is disabled")
+        builder.setMessage("Please enable GPS to use this feature.")
+        builder.setPositiveButton("Enable GPS") { _, _ ->
+            context.startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+        builder.setNegativeButton("Cancel") { _, _ -> }
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }

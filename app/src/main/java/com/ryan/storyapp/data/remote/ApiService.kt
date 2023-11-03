@@ -21,11 +21,10 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("stories")
-    fun getStories(
+    suspend fun getStories(
         @Query("page") page: Int,
-        @Query("size") size: Int,
-        @Query("location") location: Int
-    ): Call<Stories>
+        @Query("size") size: Int
+    ): Stories
 
     @GET("stories/{id}")
     fun getDetailStories(

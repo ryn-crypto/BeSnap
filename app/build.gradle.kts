@@ -91,6 +91,14 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     // coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    // paging3
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation ("androidx.room:room-ktx:2.6.0")
+    kapt ("androidx.room:room-compiler:2.6.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation ("androidx.activity:activity-ktx:1.8.0")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     // testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
