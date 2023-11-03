@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         setupAuthorization()
         setAppbar()
         navSettings()
-//        scrollListener()
 
         binding.fab.setOnClickListener {
             navigateToCreateStory()
@@ -96,32 +95,6 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = MainActivityViewModelFactory(repository)
         mainActivityViewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
     }
-
-//    private fun scrollListener() {
-//        val nestedScrollView = binding.nestedScrollView
-//        val bottomNav = binding.bottomNav
-//        val fab = binding.fab
-//
-//        nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-//            if (scrollY > oldScrollY) {
-//                bottomNav.animate().translationY(bottomNav.height.toFloat()).setDuration(300)
-//                    .withEndAction {
-//                        bottomNav.visibility = View.GONE
-//                    }
-//                fab.animate().alpha(0f).setDuration(300)
-//                    .withEndAction {
-//                        fab.visibility = View.GONE
-//                    }
-//
-//            } else {
-//                bottomNav.animate().translationY(0f).setDuration(300).withStartAction {
-//                    bottomNav.visibility = View.VISIBLE
-//                }
-//                fab.animate().alpha(1f).duration = 300
-//                fab.visibility = View.VISIBLE
-//            }
-//        }
-//    }
 
     private fun setAppbar() {
         appBar = binding.appBarLayout

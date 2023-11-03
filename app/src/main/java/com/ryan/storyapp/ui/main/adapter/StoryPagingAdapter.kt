@@ -34,30 +34,23 @@ class StoryPagingAdapter :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        if (position < SHIMMER_ITEM_COUNT) {
-            holder.showShimmer()
-        } else {
-            val data = getItem(position)
-            if (data != null) {
-                holder.bind(data)
-                holder.hideShimmer()
-            }
+        val data = getItem(position)
+        if (data != null) {
+            holder.bind(data)
         }
-
-
-    //        if (data != null) {
-//            holder.bind(data)
-//        }
     }
 
     class MyViewHolder(private val binding: StoryCardBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
+        private lateinit var itemId: String
 
         init {
             binding.ivItemPhoto.setOnClickListener(this)
         }
 
         fun bind(data: ListStoryItem) {
+            itemId = data.id
             binding.tvItemName.text = data.name
             binding.uploadTime.text =
                 DateUtils.calculateTimeAgo(binding.root.context, data.createdAt)
@@ -80,7 +73,7 @@ class StoryPagingAdapter :
             builder.append(name)
             builder.append(" ")
 
-            val description = SpannableString(data.description.replace("\n", " ") ?: "")
+            val description = SpannableString(data.description.replace("\n", " "))
             builder.append(description)
 
             binding.description.text = builder
@@ -108,42 +101,9 @@ class StoryPagingAdapter :
             }
         }
 
-        fun showShimmer() {
-            binding.shimmerLayout.visibility = View.VISIBLE
-            binding.shimmerLayout.startShimmer()
-
-            val shimmerViews = arrayOf(
-                binding.contentStory,
-                binding.tvItemName,
-                binding.uploadTime,
-                binding.description,
-                binding.action,
-            )
-            for (view in shimmerViews) {
-                view.visibility = View.INVISIBLE
-            }
-        }
-
-        fun hideShimmer() {
-            binding.shimmerLayout.stopShimmer()
-            binding.shimmerLayout.visibility = View.GONE
-
-            val contentViews = arrayOf(
-                binding.contentStory,
-                binding.tvItemName,
-                binding.uploadTime,
-                binding.description,
-                binding.action
-            )
-            for (view in contentViews) {
-                view.visibility = View.VISIBLE
-            }
-        }
-
         override fun onClick(view: View?) {
             when (view?.id) {
                 R.id.iv_item_photo -> {
-                    val itemId = view.id
                     val intent = Intent(view.context, DetailStoryActivity::class.java)
                     intent.putExtra("story_id", itemId)
 
@@ -177,14 +137,16 @@ class StoryPagingAdapter :
 
 
     companion object {
-        private const val SHIMMER_ITEM_COUNT = 4
 
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
             override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: ListStoryItem,
+                newItem: ListStoryItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
         }

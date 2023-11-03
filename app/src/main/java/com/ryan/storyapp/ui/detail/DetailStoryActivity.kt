@@ -2,7 +2,9 @@ package com.ryan.storyapp.ui.detail
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +25,7 @@ import com.ryan.storyapp.viewmodel.RegisterViewModelFactory
 class DetailStoryActivity : AppCompatActivity() {
     private lateinit var detailStoryViewModel: DetailStoryViewModel
     private lateinit var binding: ActivityDetailStoryBinding
-    private lateinit var API_KEY: String
-    private lateinit var sharedPreferencesManager: SharedPreferencesManager
+    private var isDescriptionBoxVisible = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,31 @@ class DetailStoryActivity : AppCompatActivity() {
         initiationViewModel()
         fetchStoryDetails()
         setupUI()
+
+        binding.container.setOnClickListener {
+            if (isDescriptionBoxVisible) {
+                hideDescriptionBox()
+            } else {
+                showDescriptionBox()
+            }
+            isDescriptionBoxVisible = !isDescriptionBoxVisible
+        }
+    }
+
+    private fun showDescriptionBox() {
+        val descriptionBox = binding.descriptionBox
+        descriptionBox.animate().translationY(0f).setDuration(300).withStartAction {
+            descriptionBox.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideDescriptionBox() {
+        val descriptionBox = binding.descriptionBox
+
+        descriptionBox.animate().translationY(descriptionBox.height.toFloat()).setDuration(300)
+            .withEndAction {
+                descriptionBox.visibility = View.GONE
+            }
     }
 
     private fun setupUI() {
@@ -59,9 +85,7 @@ class DetailStoryActivity : AppCompatActivity() {
     private fun fetchStoryDetails() {
         val storyId = intent.getStringExtra("story_id")
 
-        if (storyId != null) {
-            detailStoryViewModel.fetchDetailStory(storyId)
-        }
+        detailStoryViewModel.fetchDetailStory(storyId.toString())
 
         detailStoryViewModel.detailStory.observe(this@DetailStoryActivity) { result ->
             when (result) {
@@ -102,7 +126,8 @@ class DetailStoryActivity : AppCompatActivity() {
     }
 
     private fun handleDetailStoryError(errorMessage: String) {
-        Toast.makeText(this, "${getString(R.string.error)}: $errorMessage", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${getString(R.string.error)}: $errorMessage", Toast.LENGTH_SHORT)
+            .show()
         hideShimmerAnimations()
     }
 

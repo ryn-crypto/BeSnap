@@ -6,7 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.ryan.storyapp.R
 import com.ryan.storyapp.databinding.FragmentStoryBinding
 import com.ryan.storyapp.ui.main.adapter.LoadingPagingAdapter
 import com.ryan.storyapp.ui.main.adapter.StoryPagingAdapter
@@ -27,16 +32,10 @@ class StoryFragment : Fragment() {
         val view = binding.root
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
-//        setAppbar()
         setView()
-
+        scrollListener()
         return view
     }
-
-//    private fun setAppbar() {
-//        (requireActivity() as AppCompatActivity).supportActionBar?.title =
-//            getString(R.string.app_name)
-//    }
 
 
     private fun setView() {
@@ -50,29 +49,38 @@ class StoryFragment : Fragment() {
             adapter.submitData(lifecycle, it)
         }
 
+        adapter.addLoadStateListener { loadState ->
+            if (loadState.refresh is LoadState.Loading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+    }
 
-//        storyViewModel.result.observe(viewLifecycleOwner) { result ->
+    private fun scrollListener() {
+        val bottomNav = requireActivity().findViewById<BottomAppBar>(R.id.bottomNav)
+        val fab = requireActivity().findViewById<FloatingActionButton>(R.id.fab)
 
-//            when (result) {
-//                is ResultViewModel.Loading -> {
-//                    adapter.showShimmer = true
-//                }
-//
-//                is ResultViewModel.Success -> {
-//                    val data = result.data
-//                    adapter.showShimmer = false
-//                    adapter.setData(data)
-//                }
-//
-//                is ResultViewModel.Error -> {
-//                    val errorMessage = result.message
-//                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-//                }
-//
-//                else -> {
-//                    val errorMessage = getString(R.string.error)
-//                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-//                }
-//            }
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 && bottomNav.visibility == View.VISIBLE) {
+                    bottomNav.animate().translationY(bottomNav.height.toFloat()).setDuration(300)
+                        .withEndAction {
+                            bottomNav.visibility = View.GONE
+                        }
+                    fab.animate().alpha(0f).setDuration(300)
+                        .withEndAction {
+                            fab.visibility = View.GONE
+                        }
+                } else if (dy < 0 && bottomNav.visibility != View.VISIBLE) {
+                    bottomNav.animate().translationY(0f).setDuration(300).withStartAction {
+                        bottomNav.visibility = View.VISIBLE
+                    }
+                    fab.animate().alpha(1f).duration = 300
+                    fab.visibility = View.VISIBLE
+                }
+            }
+        })
     }
 }
