@@ -14,17 +14,18 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.ryan.storyapp.R
 import com.ryan.storyapp.databinding.ActivityMainBinding
+import com.ryan.storyapp.repository.MainActivityRepository
 import com.ryan.storyapp.repository.StoryRepository
 import com.ryan.storyapp.ui.auth.AuthorizationActivity
 import com.ryan.storyapp.ui.createstory.CreateStoryActivity
 import com.ryan.storyapp.ui.maps.MapsActivity
-import com.ryan.storyapp.viewmodel.StoryViewModel
-import com.ryan.storyapp.viewmodel.StoryViewModelFactory
+import com.ryan.storyapp.viewmodel.MainActivityViewModel
+import com.ryan.storyapp.viewmodel.MainActivityViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
-    private lateinit var storyViewModel: StoryViewModel
+    private lateinit var mainActivityViewModel: MainActivityViewModel
 
     private lateinit var appBar: AppBarLayout
     private lateinit var toolbar: Toolbar
@@ -38,9 +39,8 @@ class MainActivity : AppCompatActivity() {
         vieModelInitialisation()
         setupAuthorization()
         setAppbar()
-        getData()
         navSettings()
-        scrollListener()
+//        scrollListener()
 
         binding.fab.setOnClickListener {
             navigateToCreateStory()
@@ -86,46 +86,42 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAuthorization() {
-        if (!storyViewModel.isLogin()) {
+        if (!mainActivityViewModel.isLogin()) {
             navigateToAuthorization()
         }
     }
 
-    private fun getData() {
-//        storyViewModel.fetchStories()
-    }
-
     private fun vieModelInitialisation() {
-        val repository = StoryRepository(this)
-        val viewModelFactory = StoryViewModelFactory(repository)
-        storyViewModel = ViewModelProvider(this, viewModelFactory)[StoryViewModel::class.java]
+        val repository = MainActivityRepository(this)
+        val viewModelFactory = MainActivityViewModelFactory(repository)
+        mainActivityViewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
     }
 
-    private fun scrollListener() {
-        val nestedScrollView = binding.nestedScrollView
-        val bottomNav = binding.bottomNav
-        val fab = binding.fab
-
-        nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-            if (scrollY > oldScrollY) {
-                bottomNav.animate().translationY(bottomNav.height.toFloat()).setDuration(300)
-                    .withEndAction {
-                        bottomNav.visibility = View.GONE
-                    }
-                fab.animate().alpha(0f).setDuration(300)
-                    .withEndAction {
-                        fab.visibility = View.GONE
-                    }
-
-            } else {
-                bottomNav.animate().translationY(0f).setDuration(300).withStartAction {
-                    bottomNav.visibility = View.VISIBLE
-                }
-                fab.animate().alpha(1f).duration = 300
-                fab.visibility = View.VISIBLE
-            }
-        }
-    }
+//    private fun scrollListener() {
+//        val nestedScrollView = binding.nestedScrollView
+//        val bottomNav = binding.bottomNav
+//        val fab = binding.fab
+//
+//        nestedScrollView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+//            if (scrollY > oldScrollY) {
+//                bottomNav.animate().translationY(bottomNav.height.toFloat()).setDuration(300)
+//                    .withEndAction {
+//                        bottomNav.visibility = View.GONE
+//                    }
+//                fab.animate().alpha(0f).setDuration(300)
+//                    .withEndAction {
+//                        fab.visibility = View.GONE
+//                    }
+//
+//            } else {
+//                bottomNav.animate().translationY(0f).setDuration(300).withStartAction {
+//                    bottomNav.visibility = View.VISIBLE
+//                }
+//                fab.animate().alpha(1f).duration = 300
+//                fab.visibility = View.VISIBLE
+//            }
+//        }
+//    }
 
     private fun setAppbar() {
         appBar = binding.appBarLayout

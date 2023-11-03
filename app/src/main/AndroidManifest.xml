@@ -60,9 +60,6 @@
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.createstory.CameraActivity"
             android:exported="false" />
         <activity
@@ -75,7 +72,7 @@
             android:name=".ui.detail.DetailStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.paging.PagingActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

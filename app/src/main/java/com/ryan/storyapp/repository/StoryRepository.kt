@@ -1,58 +1,25 @@
 package com.ryan.storyapp.repository
 
-import android.content.Context
-import com.ryan.storyapp.R
+import androidx.lifecycle.LiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.ryan.storyapp.data.model.ListStoryItem
-import com.ryan.storyapp.data.model.ResultViewModel
-import com.ryan.storyapp.data.model.Stories
-import com.ryan.storyapp.data.remote.ApiConfig
-import com.ryan.storyapp.utils.SharedPreferencesManager
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.ryan.storyapp.data.local.PagingDatabase
+import com.ryan.storyapp.data.remote.ApiService
+import com.ryan.storyapp.data.remote.StoryPagingSource
 
-class StoryRepository(private val context: Context) {
+class StoryRepository(private val pagingDatabase: PagingDatabase, private val apiService: ApiService) {
 
-    private val sharedPreferencesManager: SharedPreferencesManager = SharedPreferencesManager(context)
-    private lateinit var apiKey: String
-
-//    fun fetchStories(onResult: (ResultViewModel<List<ListStoryItem>>) -> Unit) {
-//        getApiKey()
-//        if (apiKey != null) {
-//            val client = ApiConfig.getApiServiceWithAuth(apiKey).getStories(1, 50)
-//            client.enqueue(object : Callback<Stories> {
-//                override fun onResponse(
-//                    call: Call<Stories>,
-//                    response: Response<Stories>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        val storiesResponse = response.body()
-//                        val storyItems = storiesResponse?.listStory.orEmpty().filterNotNull()
-//                        onResult(ResultViewModel.Success(storyItems))
-//                    } else {
-//                        onResult(
-//                            ResultViewModel.Error(
-//                                "${context.getString(R.string.error)}: ${response.body()?.message}"
-//                            )
-//                        )
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<Stories>, t: Throwable) {
-//                    onResult(ResultViewModel.Error("${context.getString(R.string.invalid)}: ${t.message}"))
-//                }
-//            })
-//        } else {
-//            onResult(ResultViewModel.Error(context.getString(R.string.noAvailable)))
-//        }
-//    }
-
-    fun isLogin(): Boolean {
-        getApiKey()
-        return apiKey.length >= 5
-    }
-
-    private fun getApiKey() {
-        apiKey = sharedPreferencesManager.getApiKey().toString()
+    fun getStory(): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                StoryPagingSource(apiService)
+            }
+        ).liveData
     }
 }
