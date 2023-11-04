@@ -82,7 +82,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0">
 
-                <!-- Icon image -->
                 <ImageView
                     android:id="@+id/gallery"
                     android:layout_width="wrap_content"
@@ -92,7 +91,6 @@
                     android:contentDescription="@string/icon_img"
                     android:src="@drawable/image" />
 
-                <!-- Icon lokasi -->
                 <ImageView
                     android:id="@+id/camera"
                     android:layout_width="wrap_content"
@@ -102,7 +100,6 @@
                     android:contentDescription="@string/icon_cam"
                     android:src="@drawable/camera" />
 
-                <!-- Icon emoji -->
                 <ImageView
                     android:id="@+id/maps"
                     android:layout_width="wrap_content"
@@ -112,15 +109,6 @@
                     android:contentDescription="@string/icon_loc"
                     android:src="@drawable/location"
                     android:onClick="showPopupMenu" />
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/maps"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="start"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:contentDescription="@string/icon_loc"-->
-<!--                    android:src="@drawable/location" />-->
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

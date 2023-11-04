@@ -54,12 +54,25 @@
     <string name="desc_set_lang">Pengaturan Bahasa</string>
     <string name="icon_mode">Ikon Mode Gelap/Terang</string>
     <string name="desc_set_mode">Pengaturan Mode Gelap/Terang</string>
-    <string name="icon_logout">Ikon Keluar</string>
     <string name="desc_set_logout">Keluar</string>
     <string name="upload_story">Unggah Cerita</string>
     <string name="container_img">Kontainer Gambar</string>
     <string name="profile_image">Gambar Profil</string>
     <string name="descriptions_story">Deskripsi</string>
-    <string name="desc_fab">Buat Cerita</string>
     <string name="time_upload">Waktu Unggah</string>
+    <string name="title_activity_maps">AktivitasPeta</string>
+    <string name="title_activity_select_long_li">AktivitasPilihLongLi</string>
+    <string name="empty_desc_warning">Mohon masukkan deskripsi</string>
+    <string name="email">Email</string>
+    <string name="noAvailable">Kunci API tidak tersedia</string>
+    <string name="home">Beranda</string>
+    <string name="settings">Pengaturan</string>
+    <string name="select_location_warning">Mohon tekan tombol \'Temukan Saya\' atau ketuk bangunan terdekat pada peta untuk menandai lokasimu</string>
+    <string name="location_selected">Lokasi telah dipilih</string>
+    <string name="gps_is_disabled">GPS dinonaktifkan</string>
+    <string name="enable_gps_warning">Mohon aktifkan GPS untuk menggunakan fitur ini.</string>
+    <string name="enable_gps">Aktifkan GPS</string>
+    <string name="please_wait">Mohon tunggu</string>
+    <string name="select_this_location">Pilih lokasi ini</string>
+    <string name="retry">Coba lagi</string>
 </resources>

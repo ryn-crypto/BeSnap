@@ -54,12 +54,25 @@
     <string name="desc_set_lang">Pengaturan Boso</string>
     <string name="icon_mode">Ikon Mode Gelap/Terang</string>
     <string name="desc_set_mode">Pengaturan Mode Gelap/Terang</string>
-    <string name="icon_logout">Ikon Metu</string>
     <string name="desc_set_logout">Metu</string>
     <string name="upload_story">Unggah Cerito</string>
     <string name="container_img">Kontainer Gambar</string>
     <string name="profile_image">Gambar Profil</string>
     <string name="descriptions_story">Deskripsi</string>
-    <string name="desc_fab">Gawe Cerito</string>
     <string name="time_upload">Waktu nggawe</string>
+    <string name="title_activity_maps">AktivitasPeta</string>
+    <string name="title_activity_select_long_li">AktivitasPilihLongLi</string>
+    <string name="empty_desc_warning">Mangga masukkan katerangan</string>
+    <string name="email">Surat elektronik</string>
+    <string name="noAvailable">Kunci API ora aya</string>
+    <string name="home">Omah</string>
+    <string name="settings">Pangaturan</string>
+    <string name="select_location_warning">Mangga pencet tombol \'Temu Aku\' utawa tekan gedhéan paling adoh ing peta kanggo nandhani lokasimu</string>
+    <string name="location_selected">Lokasi wis dipilih</string>
+    <string name="gps_is_disabled">GPS ora aktif</string>
+    <string name="enable_gps_warning">Mangga aktifake GPS kanggo nganggo fitur iki.</string>
+    <string name="enable_gps">Aktifake GPS</string>
+    <string name="please_wait">Mangga nunggu</string>
+    <string name="select_this_location">Pilih lokasi iki</string>
+    <string name="retry">Coba liya</string>
 </resources>

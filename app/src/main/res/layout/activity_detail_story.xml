@@ -68,7 +68,6 @@
                     app:cardElevation="4dp">
 
                     <ImageView
-                        android:id="@+id/profileImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/profile_image"
@@ -78,7 +77,6 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/box_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -113,7 +111,6 @@
                         app:shimmer_duration="1000">
 
                         <LinearLayout
-                            android:id="@+id/shimmerImagePlaceholder"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/rounded_background"
@@ -207,7 +204,6 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/action"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profileLayout"
@@ -221,7 +217,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/profileLayout"
                 tools:ignore="RtlSymmetry">
 
-                <!-- Ikon sebelah kiri (start) -->
                 <ImageButton
                     android:id="@+id/likeButton"
                     android:layout_width="30dp"

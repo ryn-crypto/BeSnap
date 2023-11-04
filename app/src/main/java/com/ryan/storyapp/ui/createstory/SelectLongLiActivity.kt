@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +24,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ryan.storyapp.R
@@ -72,7 +75,7 @@ class SelectLongLiActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initialMark, 10f))
 
         getMyLocation()
-
+        setMapStyle()
 
         var previousMarker: Marker? = null
         mMap.setOnPoiClickListener { pointOfInterest ->
@@ -170,12 +173,12 @@ class SelectLongLiActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun showText() {
-        binding.description.text = "Please press the 'Find Me' button or tap on the nearest building on the map to mark your location"
+        binding.description.text = getString(R.string.select_location_warning)
         binding.progressIndicator.visibility = View.GONE
     }
 
     private fun showToast() {
-            Toast.makeText(this, "The snap location has been selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.location_selected), Toast.LENGTH_SHORT).show()
     }
 
     private fun isLocationEnabled(context: Context): Boolean {
@@ -185,14 +188,26 @@ class SelectLongLiActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun showEnableLocationDialog(context: Context) {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("GPS is disabled")
-        builder.setMessage("Please enable GPS to use this feature.")
-        builder.setPositiveButton("Enable GPS") { _, _ ->
+        builder.setTitle(getString(R.string.gps_is_disabled))
+        builder.setMessage(getString(R.string.enable_gps_warning))
+        builder.setPositiveButton(getString(R.string.enable_gps)) { _, _ ->
             context.startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
         }
-        builder.setNegativeButton("Cancel") { _, _ -> }
+        builder.setNegativeButton(getString(R.string.cancel)) { _, _ -> }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun setMapStyle() {
+        try {
+            val success =
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style))
+            if (!success) {
+                Log.e("MapsActivity", "Style parsing failed.")
+            }
+        } catch (exception: Resources.NotFoundException) {
+            Log.e("MapsActivity", "Can't find style. Error: ", exception)
+        }
     }
 
 }
